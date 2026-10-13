@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aditia Krisna Nurprabowo - Aesthetic Portfolio</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#FBF9F5',
+                        'warm-card': '#FFFFFF',
+                        'warm-border': '#EAE5D9',
+                        terracotta: '#D97757',
+                        'terracotta-hover': '#C56242',
+                        sage: '#8A9A86',
+                        charcoal: '#222222',
+                        muted: '#666666',
+                        'soft-bg': '#F4EFE6'
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #FBF9F5;
+            color: #222222;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .glass-nav {
+            background: rgba(251, 249, 245, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(234, 229, 217, 0.8);
+        }
+
+        .portfolio-card:hover .portfolio-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FBF9F5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D5CFC2;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D97757;
+        }
+
+        /* Modal backdrop animation */
+        .modal-fade {
+            transition: opacity 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-terracotta selection:text-white">
+
+    <header class="fixed top-0 left-0 right-0 z-50 glass-nav border-b border-warm-border transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="group flex items-center gap-2">
+                <span class="w-9 h-9 rounded-full bg-terracotta text-white font-serif font-bold text-lg flex items-center justify-center shadow-md transition-transform group-hover:scale-105">
+                    A
+                </span>
+                <span class="font-serif text-xl font-bold tracking-tight text-charcoal group-hover:text-terracotta transition-colors">
+                    Aditia<span class="text-terracotta">.</span>
+                </span>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-muted">
+                <a href="#about" class="hover:text-terracotta transition-colors">Tentang Saya</a>
+                <a href="#skills" class="hover:text-terracotta transition-colors">Keahlian</a>
+                <a href="#experience" class="hover:text-terracotta transition-colors">Pengalaman</a>
+                <a href="#portfolio" class="hover:text-terracotta transition-colors">Portofolio</a>
+                <a href="#contact" class="hover:text-terracotta transition-colors">Kontak</a>
+            </nav>
+
+            <a href="#contact" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-full text-sm font-medium text-white bg-terracotta hover:bg-terracotta-hover shadow-sm transition-all hover:shadow-md">
+                Hubungi Saya
+            </a>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobileMenuBtn" class="md:hidden text-charcoal hover:text-terracotta focus:outline-none p-2" aria-label="Toggle Menu">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Dropdown Navigation -->
+        <div id="mobileMenu" class="hidden md:hidden bg-warm-card border-b border-warm-border px-6 py-4 space-y-3">
+            <a href="#about" class="block text-sm font-medium text-charcoal hover:text-terracotta mobile-link">Tentang Saya</a>
+            <a href="#skills" class="block text-sm font-medium text-charcoal hover:text-terracotta mobile-link">Keahlian</a>
+            <a href="#experience" class="block text-sm font-medium text-charcoal hover:text-terracotta mobile-link">Pengalaman</a>
+            <a href="#portfolio" class="block text-sm font-medium text-charcoal hover:text-terracotta mobile-link">Portofolio</a>
+            <a href="#contact" class="block text-sm font-medium text-charcoal hover:text-terracotta mobile-link">Kontak</a>
+        </div>
+    </header>
+
+    <section class="pt-32 pb-20 md:pt-40 md:pb-28 relative overflow-hidden">
+        <!-- Background decorative ambient circles -->
+        <div class="absolute top-10 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-terracotta/5 rounded-full blur-3xl pointer-events-none -z-10"></div>
+        <div class="absolute top-40 right-10 w-[300px] h-[300px] bg-sage/10 rounded-full blur-2xl pointer-events-none -z-10"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Hero Left Column -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-soft-bg border border-warm-border text-terracotta font-medium text-xs sm:text-sm shadow-sm">
+                        <span class="w-2 h-2 rounded-full bg-terracotta animate-pulse"></span>
+                        Content Creator & Graphic Designer | Social Media Enthusiast
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-charcoal leading-tight tracking-tight">
+                        Mengubah <span class="italic font-normal text-terracotta">Ide & Trend</span> Menjadi Visual Media Sosial yang Memikat.
+                    </h1>
+
+                    <p class="text-muted text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
+                        Halo! Saya <strong class="font-semibold text-charcoal">Aditia Krisna Nurprabowo</strong>. Spesialis dalam desain grafis media sosial, manajemen konten, serta pembuatan video pendek kreatif yang selalu dinamis dan responsif terhadap tren terkini.
+                    </p>
+
+                    <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <a href="#portfolio" class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-terracotta text-white font-medium text-sm hover:bg-terracotta-hover transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2">
+                            <span>Lihat Karya</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                        <a href="#contact" class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-warm-card border border-warm-border text-charcoal font-medium text-sm hover:border-terracotta hover:text-terracotta transition-all shadow-sm flex items-center justify-center gap-2">
+                            <span>Hubungi Saya</span>
+                            <i class="fa-regular fa-envelope text-xs"></i>
+                        </a>
+                    </div>
+
+                    <!-- Highlight Badges -->
+                    <div class="pt-8 border-t border-warm-border/60 grid grid-cols-3 gap-4 text-center lg:text-left">
+                        <div>
+                            <p class="text-2xl font-serif font-bold text-charcoal">100%</p>
+                            <p class="text-xs text-muted">Trend Aware</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-serif font-bold text-charcoal">Multi-Skill</p>
+                            <p class="text-xs text-muted">Teknis & Kreatif</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-serif font-bold text-charcoal">Adaptif</p>
+                            <p class="text-xs text-muted">Solusi Visual</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Right Column / Graphic Card Visual -->
+                <div class="lg:col-span-5 relative flex justify-center">
+                    <div class="relative w-full max-w-md aspect-[4/5] rounded-3xl overflow-hidden glass-card p-6 shadow-xl border border-white/80">
+                        <!-- Creative Aesthetic Card Content -->
+                        <div class="w-full h-full rounded-2xl bg-gradient-to-br from-[#F4EFE6] to-[#EAE5D9] p-6 flex flex-col justify-between relative overflow-hidden">
+                            <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-terracotta/20 rounded-full blur-xl"></div>
+                            
+                            <div class="flex justify-between items-start">
+                                <span class="text-xs font-semibold uppercase tracking-widest text-muted">Portfolio Highlight</span>
+                                <span class="p-2 rounded-full bg-white/80 text-terracotta shadow-sm"><i class="fa-solid fa-sparkles"></i></span>
+                            </div>
+
+                            <div class="space-y-4 my-auto text-center py-6">
+                                <div class="w-24 h-24 mx-auto rounded-full bg-white shadow-md p-1.5 border border-warm-border">
+                                    <div class="w-full h-full rounded-full bg-terracotta/10 flex items-center justify-center text-terracotta text-3xl font-serif font-bold">
+                                        AK
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 class="font-serif text-2xl font-bold text-charcoal">Aditia Krisna N.</h3>
+                                    <p class="text-xs text-muted mt-1">Social Media Specialist & Creative Designer</p>
+                                </div>
+                                <div class="flex justify-center gap-2 pt-2">
+                                    <span class="px-3 py-1 bg-white/80 rounded-full text-[11px] font-medium text-charcoal shadow-sm">Content Creator</span>
+                                    <span class="px-3 py-1 bg-white/80 rounded-full text-[11px] font-medium text-charcoal shadow-sm">Video Editor</span>
+                                </div>
+                            </div>
+
+                            <div class="bg-white/90 rounded-xl p-4 shadow-sm border border-warm-border flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-lg bg-sage/20 flex items-center justify-center text-sage">
+                                        <i class="fa-solid fa-chart-line text-xs"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs font-semibold text-charcoal">Selalu On-Trend</p>
+                                        <p class="text-[10px] text-muted">Konten relevan & estetik</p>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-circle-check text-terracotta text-sm"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 bg-soft-bg/50 border-y border-warm-border relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center space-y-4 mb-12">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-terracotta">Tentang Saya</h2>
+                <h3 class="text-3xl sm:text-4xl font-serif font-bold text-charcoal">
+                    Dedikasi Kreatif dengan Pengalaman Lapangan yang Luas
+                </h3>
+                <div class="w-12 h-0.5 bg-terracotta mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                <div class="space-y-4 text-muted text-base leading-relaxed font-light">
+                    <p>
+                        Saya adalah seorang <strong class="text-charcoal font-medium">Creative Content & Social Media Enthusiast</strong> yang memiliki minat mendalam pada estetika visual, strategi komunikasi media sosial, dan tren digital terbaru. 
+                    </p>
+                    <p>
+                        Tidak hanya berfokus pada visual yang menarik (feed Instagram, carousels, poster, hingga TikTok/Reels), saya juga dibekali latar belakang pengalaman kerja yang sangat beragam—mulai dari teknis jaringan, kontrol kualitas industri, hingga pemasaran lapangan dan pengelolaan administrasi data.
+                    </p>
+                    <p>
+                        Kombinasi antara <strong class="text-charcoal font-medium">kreativitas visual</strong> dan <strong class="text-charcoal font-medium">ketelitian operasional</strong> ini membuat saya mampu bekerja secara disiplin, adaptif, serta tanggap dalam mengeksekusi proyek konten maupun strategi sosial media.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-warm-card p-6 rounded-2xl border border-warm-border shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-10 h-10 rounded-xl bg-terracotta/10 text-terracotta flex items-center justify-center mb-4 text-lg">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </div>
+                        <h4 class="font-serif font-semibold text-charcoal text-lg mb-1">Creative Mind</h4>
+                        <p class="text-xs text-muted leading-normal">Mampu mengolah ide segar menjadi visual dan video yang menarik antusiasme audiens.</p>
+                    </div>
+
+                    <div class="bg-warm-card p-6 rounded-2xl border border-warm-border shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-10 h-10 rounded-xl bg-sage/20 text-sage flex items-center justify-center mb-4 text-lg">
+                            <i class="fa-solid fa-arrow-trend-up"></i>
+                        </div>
+                        <h4 class="font-serif font-semibold text-charcoal text-lg mb-1">Trend Aware</h4>
+                        <p class="text-xs text-muted leading-normal">Aktif mengikuti perkembangan audio, format konten, serta algoritma sosial media terkini.</p>
+                    </div>
+
+                    <div class="bg-warm-card p-6 rounded-2xl border border-warm-border shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-10 h-10 rounded-xl bg-sage/20 text-sage flex items-center justify-center mb-4 text-lg">
+                            <i class="fa-solid fa-sliders"></i>
+                        </div>
+                        <h4 class="font-serif font-semibold text-charcoal text-lg mb-1">Detail Oriented</h4>
+                        <p class="text-xs text-muted leading-normal">Pengalaman Quality Control & Data Entry memastikan setiap karya rapi dan bebas dari kesalahan.</p>
+                    </div>
+
+                    <div class="bg-warm-card p-6 rounded-2xl border border-warm-border shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-10 h-10 rounded-xl bg-terracotta/10 text-terracotta flex items-center justify-center mb-4 text-lg">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                        <h4 class="font-serif font-semibold text-charcoal text-lg mb-1">Multitasking</h4>
+                        <p class="text-xs text-muted leading-normal">Terbiasa menangani peran teknis, administrasi, hingga komunikasi pemasaran secara efektif.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-4 mb-16">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-terracotta">Keahlian & Layanan</h2>
+                <h3 class="text-3xl sm:text-4xl font-serif font-bold text-charcoal">
+                    Layanan Utama & Kombinasi Skill
+                </h3>
+                <p class="text-muted text-sm max-w-xl mx-auto">Solusi lengkap dari konseptualisasi visual hingga eksekusi teknis sosial media.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Skill Card 1 -->
+                <div class="bg-warm-card p-8 rounded-3xl border border-warm-border shadow-sm hover:border-terracotta/50 transition-all group hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-2xl bg-soft-bg text-terracotta flex items-center justify-center text-xl mb-6 group-hover:bg-terracotta group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-palette"></i>
+                    </div>
+                    <h4 class="font-serif font-bold text-charcoal text-xl mb-3">Desain Grafis Sosmed</h4>
+                    <p class="text-xs text-muted leading-relaxed mb-4">
+                        Pembuatan layout mikro/macro untuk Feed Instagram, Carousel edukatif, Story interaktif, hingga poster promosi dengan komposisi warna aesthetic.
+                    </p>
+                    <ul class="text-xs text-charcoal space-y-2 font-medium">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-terracotta text-[10px]"></i> Feed & Carousel Instagram</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-terracotta text-[10px]"></i> Poster & Banner Promo</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-terracotta text-[10px]"></i> Branding Visual Kit</li>
+                    </ul>
+                </div>
+
+                <!-- Skill Card 2 -->
+                <div class="bg-warm-card p-8 rounded-3xl border border-warm-border shadow-sm hover:border-terracotta/50 transition-all group hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-2xl bg-soft-bg text-terracotta flex items-center justify-center text-xl mb-6 group-hover:bg-terracotta group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-hashtag"></i>
+                    </div>
+                    <h4 class="font-serif font-bold text-charcoal text-xl mb-3">Admin & Strategi Sosmed</h4>
+                    <p class="text-xs text-muted leading-relaxed mb-4">
+                        Pengelolaan akun secara berkala, riset tagar/tren, penyusunan jadwal posting (Content Calendar), serta optimalisasi tingkat interaksi (Engagement).
+                    </p>
+                    <ul class="text-xs text-charcoal space-y-2 font-medium">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-terracotta text-[10px]"></i> Content Planning & Calendar</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-terracotta text-[10px]"></i> Audience Engagement</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-terracotta text-[10px]"></i> Analisis Tren Audio/Topic</li>
+                    </ul>
+                </div>
+
+                <!-- Skill Card 3 -->
+                <div class="bg-warm-card p-8 rounded-3xl border border-warm-border shadow-sm hover:border-terracotta/50 transition-all group hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-2xl bg-soft-bg text-terracotta flex items-center justify-center text-xl mb-6 group-hover:bg-terracotta group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-video"></i>
+                    </div>
+                    <h4 class="font-serif font-bold text-charcoal text-xl mb-3">Content & Video Editing</h4>
+                    <p class="text-xs text-muted leading-relaxed mb-4">
+                        Editing video dasar untuk platform short-form seperti Instagram Reels & TikTok dengan ritme pemotongan pas, teks dinamis, dan musik pop/trending.
+                    </p>
+                    <ul class="text-xs text-charcoal space-y-2 font-medium">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-terracotta text-[10px]"></i> Editing Reels / TikTok Short Video</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-terracotta text-[10px]"></i> Dynamic Subtitle & Audio Sync</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-terracotta text-[10px]"></i> Visual Storytelling Simple</li>
+                    </ul>
+                </div>
+
+                <!-- Skill Card 4 -->
+                <div class="bg-warm-card p-8 rounded-3xl border border-warm-border shadow-sm hover:border-terracotta/50 transition-all group hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-2xl bg-soft-bg text-terracotta flex items-center justify-center text-xl mb-6 group-hover:bg-terracotta group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-gears"></i>
+                    </div>
+                    <h4 class="font-serif font-bold text-charcoal text-xl mb-3">Teknis & Operasional</h4>
+                    <p class="text-xs text-muted leading-relaxed mb-4">
+                        Fleksibilitas teknis lapangan dan administrasi presisi yang didukung pengalaman kerja multidisiplin di berbagai sektor industri.
+                    </p>
+                    <ul class="text-xs text-charcoal space-y-2 font-medium">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-terracotta text-[10px]"></i> Quality Control & Inspection</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-terracotta text-[10px]"></i> Technical & Data Accuracy</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-terracotta text-[10px]"></i> Digital & Field Marketing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-20 bg-soft-bg/50 border-y border-warm-border">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-4 mb-16">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-terracotta">Jejak Langkah</h2>
+                <h3 class="text-3xl sm:text-4xl font-serif font-bold text-charcoal">Pengalaman Kerja & Magang</h3>
+                <p class="text-muted text-sm max-w-xl mx-auto">Perjalanan profesional mendewasakan pemahaman teknis dan kreativitas saya.</p>
+            </div>
+
+            <!-- Timeline Vertical Line Container -->
+            <div class="relative border-l-2 border-warm-border md:mx-auto ml-4 space-y-10 md:space-y-12">
+
+                <!-- Experience Item 1 -->
+                <div class="relative pl-8 md:pl-10 group">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-warm-card border-2 border-terracotta group-hover:scale-125 transition-transform"></div>
+                    <div class="bg-warm-card p-6 rounded-2xl border border-warm-border shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+                            <h4 class="font-serif font-bold text-xl text-charcoal">Quality Control</h4>
+                            <span class="px-3 py-1 rounded-full bg-soft-bg text-terracotta font-medium text-xs w-fit">PT. CS2 Pola Sehat (OT Group)</span>
+                        </div>
+                        <p class="text-xs text-muted leading-relaxed">
+                            Bertanggung jawab terhadap standar kualitas produk secara teliti, memastikan seluruh proses produksi memenuhi kualifikasi mutu yang ditetapkan oleh perusahaan manufaktur skala nasional.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Experience Item 2 -->
+                <div class="relative pl-8 md:pl-10 group">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-warm-card border-2 border-terracotta group-hover:scale-125 transition-transform"></div>
+                    <div class="bg-warm-card p-6 rounded-2xl border border-warm-border shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+                            <h4 class="font-serif font-bold text-xl text-charcoal">Teknisi Jaringan</h4>
+                            <span class="px-3 py-1 rounded-full bg-soft-bg text-terracotta font-medium text-xs w-fit">CV. Wifiku Telekomunikasi Global</span>
+                        </div>
+                        <p class="text-xs text-muted leading-relaxed">
+                            Menangani instalasi, pemeliharaan, serta pemecahan masalah kendala jaringan telekomunikasi internet di lapangan secara cepat dan terstruktur.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Experience Item 3 -->
+                <div class="relative pl-8 md:pl-10 group">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-warm-card border-2 border-terracotta group-hover:scale-125 transition-transform"></div>
+                    <div class="bg-warm-card p-6 rounded-2xl border border-warm-border shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+                            <h4 class="font-serif font-bold text-xl text-charcoal">Digital Marketing</h4>
+                            <span class="px-3 py-1 rounded-full bg-soft-bg text-terracotta font-medium text-xs w-fit">Workshop Banyumili</span>
+                        </div>
+                        <p class="text-xs text-muted leading-relaxed">
+                            Merancang strategi pemasaran digital, mengelola konten visual promosi produk/jasa, serta meningkatkan efektivitas jangkauan merek di ranah digital.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Experience Item 4 -->
+                <div class="relative pl-8 md:pl-10 group">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-warm-card border-2 border-terracotta group-hover:scale-125 transition-transform"></div>
+                    <div class="bg-warm-card p-6 rounded-2xl border border-warm-border shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+                            <h4 class="font-serif font-bold text-xl text-charcoal">Field Marketing</h4>
+                            <span class="px-3 py-1 rounded-full bg-soft-bg text-terracotta font-medium text-xs w-fit">Bank BJB</span>
+                        </div>
+                        <p class="text-xs text-muted leading-relaxed">
+                            Melakukan interaksi langsung dengan prospek nasabah, menyosialisasikan produk perbankan, serta mengasah komunikasi persuasif secara tatap muka.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Experience Item 5 -->
+                <div class="relative pl-8 md:pl-10 group">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-warm-card border-2 border-terracotta group-hover:scale-125 transition-transform"></div>
+                    <div class="bg-warm-card p-6 rounded-2xl border border-warm-border shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+                            <h4 class="font-serif font-bold text-xl text-charcoal">Admin</h4>
+                            <span class="px-3 py-1 rounded-full bg-soft-bg text-terracotta font-medium text-xs w-fit">SPPG Pasawahan 05</span>
+                        </div>
+                        <p class="text-xs text-muted leading-relaxed">
+                            Mengelola pencatatan dokumen operasional, inventarisir data, dan koordinasi alur administrasi internal harian dengan rapi dan sistematis.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Experience Item 6 -->
+                <div class="relative pl-8 md:pl-10 group">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-warm-card border-2 border-terracotta group-hover:scale-125 transition-transform"></div>
+                    <div class="bg-warm-card p-6 rounded-2xl border border-warm-border shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+                            <h4 class="font-serif font-bold text-xl text-charcoal">Data Entry (PKL)</h4>
+                            <span class="px-3 py-1 rounded-full bg-soft-bg text-terracotta font-medium text-xs w-fit">Kantor Desa Nanggeran</span>
+                        </div>
+                        <p class="text-xs text-muted leading-relaxed">
+                            Melakukan entri data kependudukan, rekapitulasi surat-menyurat, serta mendukung keakuratan sistem arsip pelayanan publik desa.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-4 mb-12">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-terracotta">Galeri Karya</h2>
+                <h3 class="text-3xl sm:text-4xl font-serif font-bold text-charcoal">Portofolio Pilihan</h3>
+                <p class="text-muted text-sm max-w-xl mx-auto">Eksplorasi visual, desain promo sosial media, dan konsep konten buatan saya.</p>
+            </div>
+
+            <!-- Filter Tabs Buttons -->
+            <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-4 mb-12">
+                <button class="filter-btn active px-5 py-2 rounded-full text-xs sm:text-sm font-medium bg-terracotta text-white transition-all shadow-sm" data-filter="all">
+                    Semua Karya
+                </button>
+                <button class="filter-btn px-5 py-2 rounded-full text-xs sm:text-sm font-medium bg-warm-card border border-warm-border text-charcoal hover:border-terracotta transition-all" data-filter="design">
+                    Graphic Design
+                </button>
+                <button class="filter-btn px-5 py-2 rounded-full text-xs sm:text-sm font-medium bg-warm-card border border-warm-border text-charcoal hover:border-terracotta transition-all" data-filter="social">
+                    Social Media
+                </button>
+                <button class="filter-btn px-5 py-2 rounded-full text-xs sm:text-sm font-medium bg-warm-card border border-warm-border text-charcoal hover:border-terracotta transition-all" data-filter="video">
+                    Video & Content
+                </button>
+            </div>
+
+            <!-- Portfolio Grid Container -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolioGrid">
+
+                <!-- Item 1: Design -->
+                <div class="portfolio-item portfolio-card group relative bg-warm-card rounded-3xl overflow-hidden border border-warm-border shadow-sm cursor-pointer" data-category="design" onclick="openModal('Aesthetic Instagram Feed Concept', 'Graphic Design', 'Konsep tata letak grid Instagram berskala aesthetic dengan sentuhan earth tone & typography modern.', 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80')">
+                    <div class="aspect-[4/3] w-full overflow-hidden bg-soft-bg relative">
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80" alt="Instagram Design" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                        <div class="portfolio-overlay absolute inset-0 bg-charcoal/60 backdrop-blur-xs opacity-0 transition-all duration-300 flex items-center justify-center p-6 text-center">
+                            <span class="px-4 py-2 rounded-full bg-white/90 text-charcoal font-medium text-xs shadow-lg">Lihat Detail</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-terracotta">Graphic Design</span>
+                        <h4 class="font-serif font-bold text-lg text-charcoal mt-1">Aesthetic Feed Instagram</h4>
+                        <p class="text-xs text-muted mt-2 line-clamp-2">Harmonisasi warna earth tone dan susunan visual promo interaktif.</p>
+                    </div>
+                </div>
+
+                <!-- Item 2: Social -->
+                <div class="portfolio-item portfolio-card group relative bg-warm-card rounded-3xl overflow-hidden border border-warm-border shadow-sm cursor-pointer" data-category="social" onclick="openModal('Social Media Content Plan', 'Social Media', 'Strategi penjadwalan konten carousel edukatif dengan fokus engagement audiens.', 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80')">
+                    <div class="aspect-[4/3] w-full overflow-hidden bg-soft-bg relative">
+                        <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80" alt="Social Media Strategy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                        <div class="portfolio-overlay absolute inset-0 bg-charcoal/60 backdrop-blur-xs opacity-0 transition-all duration-300 flex items-center justify-center p-6 text-center">
+                            <span class="px-4 py-2 rounded-full bg-white/90 text-charcoal font-medium text-xs shadow-lg">Lihat Detail</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-terracotta">Social Media</span>
+                        <h4 class="font-serif font-bold text-lg text-charcoal mt-1">Carousel Edukasi Brand</h4>
+                        <p class="text-xs text-muted mt-2 line-clamp-2">Konten informatif berbasis gambar bertingkat untuk mendongkrak save & share.</p>
+                    </div>
+                </div>
+
+                <!-- Item 3: Video -->
+                <div class="portfolio-item portfolio-card group relative bg-warm-card rounded-3xl overflow-hidden border border-warm-border shadow-sm cursor-pointer" data-category="video" onclick="openModal('Reels Trend & TikTok Edit', 'Video & Content', 'Editing video durasi pendek dengan rhythm-matching audio tren sosial media terbaru.', 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80')">
+                    <div class="aspect-[4/3] w-full overflow-hidden bg-soft-bg relative">
+                        <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80" alt="Video Editing" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                        <div class="portfolio-overlay absolute inset-0 bg-charcoal/60 backdrop-blur-xs opacity-0 transition-all duration-300 flex items-center justify-center p-6 text-center">
+                            <span class="px-4 py-2 rounded-full bg-white/90 text-charcoal font-medium text-xs shadow-lg">Lihat Detail</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-terracotta">Video & Content</span>
+                        <h4 class="font-serif font-bold text-lg text-charcoal mt-1">Short Video Reels / TikTok</h4>
+                        <p class="text-xs text-muted mt-2 line-clamp-2">Editing ritmis dinamis dengan transisi halus dan subtitle yang menarik.</p>
+                    </div>
+                </div>
+
+                <!-- Item 4: Design -->
+                <div class="portfolio-item portfolio-card group relative bg-warm-card rounded-3xl overflow-hidden border border-warm-border shadow-sm cursor-pointer" data-category="design" onclick="openModal('Promo Campaign Banner', 'Graphic Design', 'Desain banner promosi bisnis dengan fokus keterbacaan tinggi dan penawaran menarik.', 'https://images.unsplash.com/photo-1542744094-3a3172720449?auto=format&fit=crop&w=800&q=80')">
+                    <div class="aspect-[4/3] w-full overflow-hidden bg-soft-bg relative">
+                        <img src="https://images.unsplash.com/photo-1542744094-3a3172720449?auto=format&fit=crop&w=800&q=80" alt="Promo Poster" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                        <div class="portfolio-overlay absolute inset-0 bg-charcoal/60 backdrop-blur-xs opacity-0 transition-all duration-300 flex items-center justify-center p-6 text-center">
+                            <span class="px-4 py-2 rounded-full bg-white/90 text-charcoal font-medium text-xs shadow-lg">Lihat Detail</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-terracotta">Graphic Design</span>
+                        <h4 class="font-serif font-bold text-lg text-charcoal mt-1">Banner & Flyer Promosi</h4>
+                        <p class="text-xs text-muted mt-2 line-clamp-2">Desain promosi komersial untuk kebutuhan pemasaran cetak & digital.</p>
+                    </div>
+                </div>
+
+                <!-- Item 5: Social -->
+                <div class="portfolio-item portfolio-card group relative bg-warm-card rounded-3xl overflow-hidden border border-warm-border shadow-sm cursor-pointer" data-category="social" onclick="openModal('Interactive Story Campaign', 'Social Media', 'Merancang desain quiz, poll, dan interactive story untuk mempererat interaksi pengikut.', 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80')">
+                    <div class="aspect-[4/3] w-full overflow-hidden bg-soft-bg relative">
+                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80" alt="Instagram Story Design" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                        <div class="portfolio-overlay absolute inset-0 bg-charcoal/60 backdrop-blur-xs opacity-0 transition-all duration-300 flex items-center justify-center p-6 text-center">
+                            <span class="px-4 py-2 rounded-full bg-white/90 text-charcoal font-medium text-xs shadow-lg">Lihat Detail</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-terracotta">Social Media</span>
+                        <h4 class="font-serif font-bold text-lg text-charcoal mt-1">Interaktif Instagram Story</h4>
+                        <p class="text-xs text-muted mt-2 line-clamp-2">Pengembangan aset visual khusus Instagram Stories agar lebih interaktif.</p>
+                    </div>
+                </div>
+
+                <!-- Item 6: Video -->
+                <div class="portfolio-item portfolio-card group relative bg-warm-card rounded-3xl overflow-hidden border border-warm-border shadow-sm cursor-pointer" data-category="video" onclick="openModal('Behind The Scenes Creative', 'Video & Content', 'Pengambilan footage dan penyuntingan ringkas suasana kegiatan event/workshop.', 'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=800&q=80')">
+                    <div class="aspect-[4/3] w-full overflow-hidden bg-soft-bg relative">
+                        <img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=800&q=80" alt="Video Content" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                        <div class="portfolio-overlay absolute inset-0 bg-charcoal/60 backdrop-blur-xs opacity-0 transition-all duration-300 flex items-center justify-center p-6 text-center">
+                            <span class="px-4 py-2 rounded-full bg-white/90 text-charcoal font-medium text-xs shadow-lg">Lihat Detail</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-terracotta">Video & Content</span>
+                        <h4 class="font-serif font-bold text-lg text-charcoal mt-1">Video Dokumentasi Acara</h4>
+                        <p class="text-xs text-muted mt-2 line-clamp-2">Kompilasi momen menarik dari kegiatan dengan narasi visual yang rapi.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 bg-soft-bg/50 border-t border-warm-border relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- Contact Info Column -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div>
+                        <h2 class="text-xs font-bold uppercase tracking-widest text-terracotta">Mari Berkolaborasi</h2>
+                        <h3 class="text-3xl sm:text-4xl font-serif font-bold text-charcoal mt-2">Tertarik Bekerja Sama?</h3>
+                    </div>
+                    <p class="text-muted text-sm leading-relaxed font-light">
+                        Apakah Anda membutuhkan desainer grafis untuk feeds sosial media, admin terorganisir, atau kreator konten yang up-to-date? Hubungi saya kapan saja!
+                    </p>
+
+                    <!-- Contact Details Badges -->
+                    <div class="space-y-4 pt-2">
+                        <div class="flex items-center gap-4 p-4 rounded-2xl bg-warm-card border border-warm-border shadow-sm">
+                            <div class="w-10 h-10 rounded-xl bg-terracotta/10 text-terracotta flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="text-[10px] uppercase font-bold text-muted">Email Direct</p>
+                                <p class="text-sm font-semibold text-charcoal">aditiakrisna@gmail.com</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 p-4 rounded-2xl bg-warm-card border border-warm-border shadow-sm">
+                            <div class="w-10 h-10 rounded-xl bg-sage/20 text-sage flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <p class="text-[10px] uppercase font-bold text-muted">Lokasi</p>
+                                <p class="text-sm font-semibold text-charcoal">Indonesia</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Aesthetic Social Buttons -->
+                    <div class="pt-4">
+                        <p class="text-xs font-semibold text-charcoal mb-3">Ikuti / Hubungi via Sosial Media:</p>
+                        <div class="flex items-center gap-3">
+                            <a href="#" target="_blank" class="w-11 h-11 rounded-full bg-warm-card border border-warm-border text-charcoal flex items-center justify-center hover:bg-terracotta hover:text-white hover:border-terracotta transition-all shadow-sm">
+                                <i class="fa-brands fa-instagram text-lg"></i>
+                            </a>
+                            <a href="#" target="_blank" class="w-11 h-11 rounded-full bg-warm-card border border-warm-border text-charcoal flex items-center justify-center hover:bg-terracotta hover:text-white hover:border-terracotta transition-all shadow-sm">
+                                <i class="fa-brands fa-linkedin-in text-lg"></i>
+                            </a>
+                            <a href="#" target="_blank" class="w-11 h-11 rounded-full bg-warm-card border border-warm-border text-charcoal flex items-center justify-center hover:bg-terracotta hover:text-white hover:border-terracotta transition-all shadow-sm">
+                                <i class="fa-brands fa-tiktok text-lg"></i>
+                            </a>
+                            <a href="https://wa.me/" target="_blank" class="w-11 h-11 rounded-full bg-warm-card border border-warm-border text-charcoal flex items-center justify-center hover:bg-terracotta hover:text-white hover:border-terracotta transition-all shadow-sm">
+                                <i class="fa-brands fa-whatsapp text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form Column -->
+                <div class="lg:col-span-7">
+                    <div class="bg-warm-card p-8 sm:p-10 rounded-3xl border border-warm-border shadow-sm">
+                        <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="name" class="block text-xs font-semibold text-charcoal uppercase tracking-wider mb-2">Nama Lengkap</label>
+                                    <input type="text" id="name" required placeholder="Nama Anda" class="w-full px-4 py-3 rounded-xl bg-soft-bg/50 border border-warm-border text-sm focus:outline-none focus:border-terracotta focus:ring-1 focus:ring-terracotta transition-all">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-xs font-semibold text-charcoal uppercase tracking-wider mb-2">Alamat Email</label>
+                                    <input type="email" id="email" required placeholder="email@domain.com" class="w-full px-4 py-3 rounded-xl bg-soft-bg/50 border border-warm-border text-sm focus:outline-none focus:border-terracotta focus:ring-1 focus:ring-terracotta transition-all">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="subject" class="block text-xs font-semibold text-charcoal uppercase tracking-wider mb-2">Subjek / Topik</label>
+                                <input type="text" id="subject" required placeholder="Penawaran Kerja / Proyek Content" class="w-full px-4 py-3 rounded-xl bg-soft-bg/50 border border-warm-border text-sm focus:outline-none focus:border-terracotta focus:ring-1 focus:ring-terracotta transition-all">
+                            </div>
+
+                            <div>
+                                <label for="message" class="block text-xs font-semibold text-charcoal uppercase tracking-wider mb-2">Pesan</label>
+                                <textarea id="message" rows="4" required placeholder="Tuliskan detail ide atau pesan Anda di sini..." class="w-full px-4 py-3 rounded-xl bg-soft-bg/50 border border-warm-border text-sm focus:outline-none focus:border-terracotta focus:ring-1 focus:ring-terracotta transition-all resize-none"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full py-4 rounded-xl bg-terracotta text-white font-medium text-sm hover:bg-terracotta-hover transition-all shadow-md flex items-center justify-center gap-2">
+                                <span>Kirim Pesan</span>
+                                <i class="fa-solid fa-paper-plane text-xs"></i>
+                            </button>
+                        </form>
+
+                        <!-- Success Alert Message Box -->
+                        <div id="formAlert" class="hidden mt-4 p-4 rounded-xl bg-sage/20 border border-sage/40 text-charcoal text-xs text-center font-medium">
+                            <i class="fa-solid fa-circle-check text-sage mr-2"></i> Terima kasih! Pesan Anda berhasil dikirim.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-8 bg-warm-card border-t border-warm-border text-center text-xs text-muted">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>&copy; 2026 Aditia Krisna Nurprabowo. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="portfolioModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-charcoal/60 backdrop-blur-sm modal-fade">
+        <div class="bg-warm-card max-w-2xl w-full rounded-3xl overflow-hidden border border-warm-border shadow-2xl relative">
+            <button onclick="closeModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/80 text-charcoal flex items-center justify-center hover:bg-terracotta hover:text-white transition-all z-10">
+                <i class="fa-solid fa-xmark text-sm"></i>
+            </button>
+            <div class="aspect-video w-full bg-soft-bg overflow-hidden">
+                <img id="modalImage" src="" alt="Modal Visual" class="w-full h-full object-cover">
+            </div>
+            <div class="p-6 sm:p-8 space-y-3">
+                <span id="modalCategory" class="px-3 py-1 rounded-full bg-soft-bg text-terracotta font-medium text-xs"></span>
+                <h3 id="modalTitle" class="text-2xl font-serif font-bold text-charcoal"></h3>
+                <p id="modalDesc" class="text-xs text-muted leading-relaxed font-light"></p>
+                <div class="pt-4 flex justify-end">
+                    <button onclick="closeModal()" class="px-6 py-2.5 rounded-full bg-terracotta text-white font-medium text-xs hover:bg-terracotta-hover transition-colors">
+                        Tutup Preview
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* Mobile Menu Toggle Logic */
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        /* Portfolio Filtering Logic */
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active classes
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-terracotta', 'text-white');
+                    b.classList.add('bg-warm-card', 'border', 'border-warm-border', 'text-charcoal');
+                });
+
+                // Add active class to clicked button
+                btn.classList.add('bg-terracotta', 'text-white');
+                btn.classList.remove('bg-warm-card', 'border', 'border-warm-border', 'text-charcoal');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                portfolioItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        /* Portfolio Modal Logic */
+        const modal = document.getElementById('portfolioModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalCategory = document.getElementById('modalCategory');
+        const modalDesc = document.getElementById('modalDesc');
+        const modalImage = document.getElementById('modalImage');
+
+        function openModal(title, category, desc, imageSrc) {
+            modalTitle.innerText = title;
+            modalCategory.innerText = category;
+            modalDesc.innerText = desc;
+            modalImage.src = imageSrc;
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Close modal when clicking outside box
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        /* Contact Form Submission Handling */
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const alertBox = document.getElementById('formAlert');
+            const form = document.getElementById('contactForm');
+            
+            alertBox.classList.remove('hidden');
+            form.reset();
+
+            setTimeout(() => {
+                alertBox.classList.add('hidden');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
